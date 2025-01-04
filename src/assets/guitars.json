@@ -1,0 +1,59 @@
+[
+	{
+		"id": 1,
+		"name": "Fender Stratocaster",
+		"type": "Elektryczna",
+		"description": "Gitara elektryczna o wszechstronnym brzmieniu.",
+		"price": 1200,
+		"image": "/src/assets/img/guitar1.jpg",
+		"stock": 5
+	},
+	{
+		"id": 2,
+		"name": "Gibson Les Paul",
+		"type": "Elektryczna",
+		"description": "Kultowy design z bogatym, ciepłym brzmieniem.",
+		"price": 2500,
+		"image": "/src/assets/img/guitar2.jpg",
+		"stock": 3
+	},
+	{
+		"id": 3,
+		"name": "Yamaha FG800",
+		"type": "Akustyczna",
+		"description": "Idealna dla początkujących.",
+		"price": 300,
+		"image": "/src/assets/img/guitar3.jpg",
+		"stock": 10
+	},
+
+	{
+		"id": 4,
+		"name": "Fender Jazzbass",
+		"type": "Bas",
+		"description": "Idealny bas dla muzyków jazzowych",
+		"price": 700,
+		"image": "/src/assets/img/guitar3.jpg",
+		"stock": 5
+	},
+
+	{
+		"id": 5,
+		"name": "Yamaha Acoustic",
+		"type": "Akustyczna",
+		"description": "Gitara Yamaha w wersji akustycznej",
+		"price": 1200,
+		"image": "/src/assets/img/guitar3.jpg",
+		"stock": 91
+	},
+
+	{
+		"id": 6,
+		"name": "Epiphone ThunderBird",
+		"type": "Bas",
+		"description": "Gitara basowa dla fanów ciężkiego brzmienia.",
+		"price": 900,
+		"image": "/src/assets/img/guitar3.jpg",
+		"stock": 5
+	}
+]

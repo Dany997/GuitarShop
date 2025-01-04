@@ -1,0 +1,1089 @@
+// Zmienne
+$color-bg: #1a1a1a; // Ciemne tło
+$color-accent: #c94e50; // Czerwony akcent (w stylu vintage rock)
+$color-text: #f5f5f5; // Jasny tekst
+$font-title: 'Oswald', sans-serif; // Rockowa czcionka dla nagłówków
+$font-body: 'Roboto', sans-serif; // Czytelna czcionka dla treści
+$breakpoint-mobile: 768px;
+
+* {
+	box-sizing: border-box;
+}
+
+// Style ogólne
+body {
+	margin: 0;
+	font-family: $font-body;
+	color: $color-text;
+	background-color: $color-bg;
+}
+
+a {
+	text-decoration: none;
+	color: $color-text;
+}
+
+//...........NAVIGATION........
+.no-scroll {
+	overflow: hidden; /* Wyłącza przewijanie */
+	height: 100vh; /* Zapewnia pełny widok ekranu */
+}
+
+.header {
+	position: relative;
+	z-index: 10; // Ustawiamy wyższy indeks, aby nawigacja była nad tłem
+}
+
+.cart-badge {
+	top: -10px;
+	right: -10px;
+	background-color: $color-accent;
+	color: $color-bg;
+	border-radius: 50%;
+	padding: 0.2rem 0.5rem;
+	font-size: 0.8rem;
+}
+
+.nav {
+	&__list {
+		&--main {
+			display: flex;
+			list-style: none;
+			gap: 1.5rem;
+			transition: all 0.3s ease;
+			position: relative;
+
+			// Ukryte menu rozwijane
+			&.nav__list--open {
+				display: flex; // Pokaż menu po otwarciu
+			}
+		}
+
+		/* Pozycje menu */
+		.nav__item {
+			.nav__link {
+				font-family: $font-body;
+				font-size: 1rem;
+				color: $color-text;
+				text-decoration: none;
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+
+				i {
+					font-size: 1.2rem; // Ikony obok linków
+				}
+
+				&:hover {
+					color: lighten($color-accent, 10%);
+				}
+			}
+		}
+	}
+
+	&__burger {
+		display: none; // Domyślnie ukryty
+		background: none;
+		border: none;
+		color: $color-text;
+		font-size: 2rem;
+		cursor: pointer;
+		z-index: 20;
+
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+//------------------- hero section---------------
+
+.hero {
+	position: relative;
+	height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	color: $color-text;
+
+	// min-height: 100vh; // Wrapper zajmuje całą wysokość przeglądarki
+
+	// Wideo jako tło
+	&__video-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+
+		// Wideo
+		.hero__video {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			z-index: 1;
+		}
+
+		// Gradient na wideo
+		.hero__gradient {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0.5),
+				rgba(0, 0, 0, 0.8)
+			);
+			z-index: 2;
+		}
+	}
+
+	// Treść hero
+	&__content {
+		position: relative;
+		z-index: 3; // Na wierzchu gradientu
+	}
+
+	&__title {
+		font-family: $font-title;
+		font-size: 3rem;
+		text-transform: uppercase;
+		margin-bottom: 1rem;
+	}
+
+	&__subtitle {
+		font-size: 1.5rem;
+		margin-bottom: 2rem;
+	}
+
+	&__cta {
+		display: inline-block;
+		background: $color-accent;
+		color: $color-bg;
+		font-size: 1.2rem;
+		padding: 0.8rem 2rem;
+		border-radius: 5px;
+		font-weight: bold;
+		transition: background-color 0.3s ease;
+
+		&:hover {
+			background-color: darken($color-accent, 10%);
+		}
+	}
+}
+
+.footer {
+	background-color: #111;
+	text-align: center;
+	padding: 2rem;
+	font-size: 0.9rem;
+
+	&__text {
+		color: lighten($color-text, 20%);
+	}
+}
+
+// -----Products page---------------
+
+.products {
+	padding: 3rem 1rem;
+	text-align: center;
+	padding: 20px;
+
+	&__title {
+		font-family: $font-title;
+		font-size: 2.5rem;
+		color: $color-text;
+		margin-bottom: 2rem;
+	}
+
+	&__container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center; // Centruje elementy na środku
+		gap: 1.5rem; // Odstępy między kartami
+	}
+}
+
+.product-card {
+	background-color: #2a2a2a;
+	color: $color-text;
+	border-radius: 8px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 20%; // Kwadratowe proporcje
+	height: 20%;
+	transition: transform 0.3s, box-shadow 0.3s;
+	margin-bottom: 40px;
+	&:hover {
+		transform: scale(1.05);
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+	}
+
+	&__image {
+		width: 50%;
+		height: 50%; // 60% wysokości dla obrazu
+		object-fit: cover; // Obraz dopasowuje się do wymiarów
+		object-position: center;
+		margin-top: 20px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.781);
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		padding: 0.5rem;
+		flex-grow: 1; // Rozciąga sekcję informacyjną
+	}
+
+	&__name {
+		font-family: $font-title;
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+		color: $color-accent;
+	}
+
+	&__price {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	&__stock {
+		font-size: 1rem;
+		margin-top: 0.5rem;
+	}
+
+	&__button {
+		background: $color-accent;
+		color: $color-bg;
+		font-size: 0.9rem;
+		padding: 0.5rem 1rem;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+		margin-bottom: 4px;
+
+		&:hover {
+			background-color: darken($color-accent, 10%);
+		}
+	}
+}
+
+// --------------productCardViev-----------------------
+
+.cardView {
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 80vh;
+
+	&__container {
+		display: flex;
+		gap: 2rem;
+		background-color: #2a2a2a;
+		border-radius: 8px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+		padding: 2rem;
+		max-width: 900px;
+		width: 900px;
+	}
+
+	&__image-wrapper {
+		flex: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		border-radius: 8px;
+
+		.cardView__image {
+			max-width: 100%;
+			height: auto;
+			border-radius: 8px;
+			object-fit: cover;
+		}
+	}
+
+	&__details {
+		flex: 1;
+		color: $color-text;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		.cardView__title {
+			font-family: $font-title;
+			font-size: 2rem;
+			color: $color-accent;
+			margin-bottom: 1rem;
+		}
+
+		.cardView__description {
+			font-family: $font-body;
+			font-size: 1rem;
+			line-height: 1.6;
+			margin-bottom: 1.5rem;
+		}
+
+		.cardView__price {
+			font-size: 1.2rem;
+			font-weight: bold;
+			margin-bottom: 2rem;
+
+			span {
+				color: $color-accent;
+			}
+		}
+
+		.cardView__button {
+			background-color: $color-accent;
+			color: $color-bg;
+			font-size: 1rem;
+			padding: 0.8rem 1.5rem;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: lighten($color-accent, 10%);
+			}
+		}
+	}
+}
+
+// -------aboutUsView--------------
+
+.about {
+	padding: 2rem;
+	background-color: #2a2a2a;
+	color: $color-text;
+
+	&__container {
+		max-width: 1200px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	&__title {
+		font-family: $font-title;
+		font-size: 2.5rem;
+		color: $color-accent;
+		margin-bottom: 1rem;
+	}
+
+	&__tagline {
+		font-family: $font-body;
+		font-size: 1.2rem;
+		margin-bottom: 2rem;
+		color: lighten($color-text, 20%);
+	}
+
+	&__content {
+		display: flex;
+		gap: 2rem;
+		flex-wrap: wrap; // Dzięki temu layout działa też na mniejszych ekranach
+		align-items: center;
+
+		& > * {
+			flex: 1;
+		}
+	}
+
+	&__text {
+		text-align: left;
+
+		h2 {
+			font-family: $font-title;
+			font-size: 1.8rem;
+			color: $color-accent;
+			margin-bottom: 0.5rem;
+		}
+
+		p {
+			font-family: $font-body;
+			font-size: 1rem;
+			line-height: 1.6;
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	&__image-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.about__image {
+			max-width: 100%;
+			height: auto;
+			border-radius: 8px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+		}
+	}
+}
+
+// ----------contactView------------
+
+.contact {
+	padding: 2rem;
+	background-color: #2a2a2a;
+	color: $color-text;
+
+	&__container {
+		max-width: 900px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+	&__title {
+		font-family: $font-title;
+		font-size: 2.5rem;
+		color: $color-accent;
+		margin-bottom: 1rem;
+	}
+
+	&__subtitle {
+		font-family: $font-body;
+		font-size: 1.2rem;
+		color: lighten($color-text, 20%);
+		margin-bottom: 2rem;
+	}
+
+	&__content {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
+		justify-content: space-between;
+
+		& > * {
+			flex: 1;
+			min-width: 300px;
+		}
+	}
+
+	&__info {
+		text-align: left;
+
+		h2 {
+			font-family: $font-title;
+			font-size: 1.8rem;
+			color: $color-accent;
+			margin-bottom: 1rem;
+		}
+
+		p {
+			font-family: $font-body;
+			font-size: 1rem;
+			line-height: 1.6;
+			margin-bottom: 0.8rem;
+
+			i {
+				margin-right: 0.5rem;
+				color: $color-accent;
+			}
+		}
+	}
+
+	&__form {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		background-color: #1f1f1f;
+		padding: 1.5rem;
+		border-radius: 8px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+		&-group {
+			display: flex;
+			flex-direction: column;
+			text-align: left;
+
+			label {
+				font-family: $font-body;
+				margin-bottom: 0.5rem;
+			}
+
+			input,
+			textarea {
+				font-family: $font-body;
+				font-size: 1rem;
+				padding: 0.8rem;
+				border: 1px solid darken($color-accent, 20%);
+				border-radius: 4px;
+				background-color: #2a2a2a;
+				color: $color-text;
+			}
+
+			input:focus,
+			textarea:focus {
+				outline: none;
+				border-color: $color-accent;
+			}
+		}
+
+		.contact__button {
+			background-color: $color-accent;
+			color: $color-bg;
+			font-size: 1rem;
+			padding: 0.8rem;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: lighten($color-accent, 10%);
+			}
+		}
+	}
+}
+
+// -----CartView-----------------
+
+.cart {
+	padding: 20px;
+	max-width: 800px;
+	margin: 0 auto;
+
+	&__title {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	&__container {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	&__item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 15px;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		gap: 20px;
+
+		&-image {
+			width: 80px;
+			height: 80px;
+			object-fit: cover;
+			border-radius: 5px;
+			flex-shrink: 0;
+		}
+
+		&-details {
+			flex: 1;
+
+			&-title {
+				font-size: 1.2rem;
+				font-weight: bold;
+				margin-bottom: 10px;
+			}
+
+			&-price,
+			&-quantity,
+			&-total {
+				font-size: 1rem;
+				margin: 5px 0;
+			}
+		}
+
+		&-actions {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+
+			.cart__remove-button {
+				background-color: rgb(228, 16, 16);
+				color: white;
+				border: none;
+				padding: 5px 10px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+
+				&:hover {
+					background-color: rgb(228, 61, 61);
+				}
+			}
+		}
+	}
+
+	&__summary {
+		text-align: right;
+
+		p {
+			margin: 5px 0;
+			font-size: 1rem;
+
+			&:first-of-type {
+				font-weight: bold;
+			}
+		}
+
+		.cart__clear-button {
+			background-color: $color-accent;
+			color: $color-bg;
+			border: none;
+			padding: 10px 20px;
+			cursor: pointer;
+			transition: background-color 0.3s;
+
+			&:hover {
+				background-color: darken($color-accent, 10%);
+			}
+		}
+	}
+
+	&__empty-message {
+		text-align: center;
+		font-size: 1.2rem;
+		color: #555;
+	}
+}
+
+.modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+
+	&__overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.699);
+	}
+
+	&__content {
+		position: relative;
+		background: $color-bg;
+		padding: 50px;
+		border-radius: 10px;
+		text-align: center;
+		z-index: 1001;
+		box-shadow: 0 0px 6px rgba(0, 0, 0, 0.712);
+
+		h2 {
+			margin-bottom: 50px;
+			font-size: 1.5rem;
+		}
+
+		&__actions {
+			display: flex;
+			justify-content: space-around;
+		}
+	}
+	&__button {
+		padding: 10px 20px;
+		font-size: 1rem;
+		border: none;
+		cursor: pointer;
+		border-radius: 5px;
+		background-color: $color-accent;
+		transition: background 0.3s;
+		&:not(:last-child) {
+			// Dodaj margines tylko do przycisków poza ostatnim
+			margin-right: 20px;
+		}
+		&:hover {
+			background-color: darken($color-accent, 10%);
+		}
+	}
+}
+
+// -----------SearchBarComponent--------------
+
+// SearchBar component styles
+.search-bar {
+	margin: 20px auto;
+	width: 100%;
+	max-width: 400px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 40px;
+	&__input {
+		width: 100%;
+		padding: 10px 15px;
+		font-size: 1rem;
+		border: 1px solid black;
+		border-radius: 5px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+		transition: border-color 0.3s, box-shadow 0.3s;
+
+		&:focus {
+			border-color: $color-accent;
+			box-shadow: 0 4px 8px rgba($color-accent, 0.3);
+			outline: none;
+		}
+
+		&::placeholder {
+			color: $color-bg;
+			font-size: 0.9rem;
+		}
+	}
+	i {
+		color: $color-accent;
+		font-size: 2rem;
+	}
+}
+
+// ------------------ACCOUNT-VIEW-----------------
+.accountView {
+	min-height: 80vh;
+}
+.account {
+	background-color: #1f1f1f;
+	color: $color-text;
+	padding: 2rem;
+	margin: 2rem auto;
+	max-width: 800px;
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+	&__header {
+		margin-bottom: 2rem;
+		text-align: center;
+		background-color: #1f1f1f;
+		color: $color-text;
+		padding: 2rem;
+		margin: 2rem auto;
+		max-width: 800px;
+		border-radius: 8px;
+		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+
+		&__title {
+			font-family: $font-title;
+			font-size: 2rem;
+			color: $color-accent;
+		}
+	}
+
+	&__details {
+		background-color: #2a2a2a;
+		padding: 1.5rem;
+		border-radius: 8px;
+		margin-bottom: 2rem;
+
+		&__info {
+			font-size: 1rem;
+			line-height: 1.5;
+			margin-bottom: 1rem;
+
+			strong {
+				color: $color-accent;
+			}
+		}
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+	&__button {
+		background-color: $color-accent;
+		color: $color-bg;
+		padding: 0.5rem 1.5rem;
+		font-size: 1rem;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		transition: background-color 0.3s, transform 0.2s;
+
+		&:hover {
+			color: lighten($color-accent, 10%);
+			transform: scale(1.1); // Delikatne
+			color: $color-bg;
+		}
+	}
+}
+
+.auth-section {
+	min-height: 80vh;
+}
+
+.auth-form {
+	background-color: #1f1f1f;
+	color: $color-text;
+	padding: 2rem;
+	max-width: 400px;
+	margin: 2rem auto;
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+	text-align: center;
+
+	h2 {
+		font-family: $font-title;
+		font-size: 1.5rem;
+		color: $color-accent;
+		margin-bottom: 1.5rem;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+
+		input {
+			background-color: #2a2a2a;
+			color: $color-text;
+			padding: 0.8rem;
+			border: 1px solid #3a3a3a;
+			border-radius: 4px;
+			font-size: 1rem;
+
+			&:focus {
+				outline: none;
+				border-color: $color-accent;
+				box-shadow: 0 0 5px rgba($color-accent, 0.5);
+			}
+
+			&::placeholder {
+				color: #888;
+			}
+		}
+
+		button[type='submit'] {
+			background-color: $color-accent;
+			color: $color-bg;
+			padding: 0.8rem;
+			border: none;
+			border-radius: 4px;
+			font-size: 1rem;
+			cursor: pointer;
+			transition: background-color 0.3s, transform 0.2s;
+
+			&:hover {
+				background-color: lighten($color-accent, 10%);
+				transform: translateY(-2px);
+			}
+
+			&:active {
+				transform: translateY(0);
+			}
+		}
+	}
+
+	button {
+		background: none;
+		color: $color-accent;
+		font-size: 0.9rem;
+		margin-top: 1rem;
+		border: none;
+		cursor: pointer;
+		transition: color 0.3s;
+
+		&:hover {
+			color: lighten($color-accent, 10%);
+		}
+	}
+}
+
+// MOBILE----VERSION---------------
+
+@media (max-width: 320px) {
+	.contact {
+		padding: 0.1rem;
+	}
+}
+
+@media (max-width: $breakpoint-mobile) {
+	.nav {
+		&__list {
+			display: none; // Domyślnie ukryte
+			flex-direction: column; // Linki w kolumnie
+			position: absolute; // Absolutne pozycjonowanie
+			top: 100%; // Pod nawigacją
+			left: 0;
+			width: 100%;
+			background: rgba(0, 0, 0, 0.9); // Ciemne tło
+			padding: 1rem 0;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+			&--cart {
+				margin: 0; // Reset marginesu koszyka
+			}
+
+			.nav__item {
+				text-align: center;
+
+				.nav__link {
+					padding: 1rem; // Więcej przestrzeni
+					display: block; // Cały link jest klikany
+				}
+			}
+		}
+
+		// Aktywne menu
+		&--active {
+			display: flex; // Pokazuje menu
+		}
+	}
+
+	.nav__burger {
+		display: block; // Widoczny burger
+	}
+
+	.hero {
+		height: auto; // Dynamiczna wysokość
+		min-height: 80vh;
+
+		&__title {
+			font-size: 2rem; // Mniejsze nagłówki
+		}
+
+		&__subtitle {
+			font-size: 1.2rem;
+		}
+
+		&__cta {
+			font-size: 1rem;
+			padding: 0.5rem 1.5rem; // Zmniejszenie przycisku
+		}
+	}
+
+	.products {
+		&__container {
+			flex-direction: column; // Karty jedna pod drugą
+			gap: 1rem; // Mniejszy odstęp
+		}
+	}
+
+	.product-card {
+		width: 100%; // Karty na pełną szerokość
+		height: auto; // Dynamiczna wysokość
+
+		&__image {
+			height: 50%; // Wysokość obrazu w proporcji
+		}
+
+		&__info {
+			padding: 1rem;
+		}
+	}
+
+	.cardView {
+		flex-direction: column;
+
+		&__container {
+			flex-direction: column;
+			width: 100%;
+		}
+
+		&__image-wrapper {
+			margin-bottom: 1rem; // Odstęp między obrazem a treścią
+		}
+
+		&__details {
+			.cardView__title {
+				font-size: 1.5rem;
+			}
+
+			.cardView__price {
+				font-size: 1rem;
+			}
+		}
+	}
+
+	.about {
+		&__content {
+			flex-direction: column; // Układ w kolumnie
+			gap: 1rem;
+		}
+	}
+
+	.contact {
+		padding: 0.5rem;
+
+		&__info {
+			h2 {
+				text-align: center;
+			}
+		}
+
+		&__form {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+			background-color: #1f1f1f;
+			padding: 1.5rem;
+			border-radius: 8px;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+			&-group {
+				display: flex;
+				flex-direction: column;
+				text-align: left;
+
+				label {
+					font-family: $font-body;
+					margin-bottom: 0.5rem;
+				}
+
+				input,
+				textarea {
+					font-family: $font-body;
+					font-size: 1rem;
+					padding: 0.8rem;
+					border: 1px solid darken($color-accent, 20%);
+					border-radius: 4px;
+					background-color: #2a2a2a;
+					color: $color-text;
+				}
+
+				input:focus,
+				textarea:focus {
+					outline: none;
+					border-color: $color-accent;
+				}
+			}
+
+			.contact__button {
+				background-color: $color-accent;
+				color: $color-bg;
+				font-size: 1rem;
+				padding: 0.8rem;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+
+				&:hover {
+					background-color: lighten($color-accent, 10%);
+				}
+			}
+		}
+	}
+	.modal {
+		&__button {
+			margin-bottom: 20px;
+		}
+	}
+}

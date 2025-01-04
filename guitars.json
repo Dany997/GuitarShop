@@ -1,0 +1,16 @@
+[
+	{
+		"id": 1,
+		"name": "Fender Stratocaster",
+		"type": "Electric",
+		"description": "Classic electric guitar with a versatile sound.",
+		"price": 1200
+	},
+	{
+		"id": 2,
+		"name": "Gibson Les Paul",
+		"type": "Electric",
+		"description": "Iconic design with a rich, warm tone.",
+		"price": 2500
+	}
+]
