@@ -4,7 +4,7 @@ import ProductsView from '@/views/ProductsView.vue';
 import AboutCompanyView from '@/views/aboutCompanyView.vue';
 import ContactView from '../views/ContactView.vue';
 import ProductCardView from '@/views/ProductCardView.vue';
-import CartView from '@/views/CartView.vue';
+import cartView from '@/views/cartView.vue';
 import AuthView from '@/views/AuthView.vue';
 import { useAuthStore } from '@/stores/auth';
 
@@ -40,7 +40,7 @@ const router = createRouter({
 		{
 			path: '/cart',
 			name: 'Cart',
-			component: CartView,
+			component: cartView,
 		},
 		{
 			path: '/auth',
