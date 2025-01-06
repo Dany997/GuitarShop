@@ -6,6 +6,8 @@ import cors from 'cors';
 const app = express();
 const PORT = 3000;
 
+app.use(express.static('public'));
+
 // Zezwalaj na żądania z frontendowego serwera (np. localhost:5173)
 app.use(
 	cors({
