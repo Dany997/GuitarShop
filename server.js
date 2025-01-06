@@ -16,12 +16,7 @@ app.use(
 );
 
 // Ścieżka do pliku JSON
-const guitarsFilePath = path.join(
-	path.resolve(),
-	'src',
-	'assets',
-	'guitars.json'
-);
+const guitarsFilePath = path.join(path.resolve(), 'data', 'guitars.json');
 console.log('Ścieżka do pliku JSON:', guitarsFilePath); // dodanie logowania
 
 // Trasa podstawowa
