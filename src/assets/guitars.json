@@ -33,7 +33,7 @@
 		"type": "Bas",
 		"description": "Idealny bas dla muzyków jazzowych",
 		"price": 700,
-		"image": "/src/assets/img/guitar3.jpg",
+		"image": "/src/assets/img/guitar4.jpg",
 		"stock": 5
 	},
 
@@ -43,7 +43,7 @@
 		"type": "Akustyczna",
 		"description": "Gitara Yamaha w wersji akustycznej",
 		"price": 1200,
-		"image": "/src/assets/img/guitar3.jpg",
+		"image": "/src/assets/img/guitar5.jpg",
 		"stock": 91
 	},
 
@@ -53,7 +53,7 @@
 		"type": "Bas",
 		"description": "Gitara basowa dla fanów ciężkiego brzmienia.",
 		"price": 900,
-		"image": "/src/assets/img/guitar3.jpg",
+		"image": "/src/assets/img/guitar6.jpg",
 		"stock": 5
 	}
 ]
