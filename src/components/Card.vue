@@ -16,15 +16,11 @@ const productStore = useProductStore();
 const addToCart = (product) => {
 	cartStore.addToCart(product); // Dodaj do koszyka
 };
-
-// Zbuduj pełną ścieżkę do obrazka
-const imageUrl = `https://guitarshop-production.up.railway.app/images/${guitar.image}`;
 </script>
 
 <template>
 	<div class="product-card">
-		<!-- Użyj pełnej ścieżki URL -->
-		<img :src="imageUrl" :alt="guitar.name" class="product-card__image" />
+		<img :src="guitar.image" :alt="guitar.name" class="product-card__image" />
 		<div class="product-card__info">
 			<h2 class="product-card__name">{{ guitar.name }}</h2>
 			<h3 class="product-card__type">{{ guitar.type }}</h3>

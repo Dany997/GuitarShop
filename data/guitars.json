@@ -5,7 +5,7 @@
 		"type": "Elektryczna",
 		"description": "Gitara elektryczna o wszechstronnym brzmieniu.",
 		"price": 1200,
-		"image": "/public/images/guitar1.jpg",
+		"image": "/images/guitar1.jpg",
 		"stock": 5
 	},
 	{
@@ -14,7 +14,7 @@
 		"type": "Elektryczna",
 		"description": "Kultowy design z bogatym, ciepłym brzmieniem.",
 		"price": 2500,
-		"image": "/public/images/guitar2.jpg",
+		"image": "/images/guitar2.jpg",
 		"stock": 3
 	},
 	{
@@ -23,7 +23,7 @@
 		"type": "Akustyczna",
 		"description": "Idealna dla początkujących.",
 		"price": 300,
-		"image": "/public/images/guitar3.jpg",
+		"image": "/images/guitar3.jpg",
 		"stock": 10
 	},
 
@@ -33,7 +33,7 @@
 		"type": "Bas",
 		"description": "Idealny bas dla muzyków jazzowych",
 		"price": 700,
-		"image": "/public/images/guitar4.jpg",
+		"image": "/images/guitar4.jpg",
 		"stock": 5
 	},
 
@@ -43,7 +43,7 @@
 		"type": "Akustyczna",
 		"description": "Gitara Yamaha w wersji akustycznej",
 		"price": 1200,
-		"image": "/public/images/guitar5.jpg",
+		"image": "/images/guitar5.jpg",
 		"stock": 91
 	},
 
@@ -53,7 +53,7 @@
 		"type": "Bas",
 		"description": "Gitara basowa dla fanów ciężkiego brzmienia.",
 		"price": 900,
-		"image": "/public/images/guitar6.jpg",
+		"image": "/images/guitar6.jpg",
 		"stock": 5
 	}
 ]
