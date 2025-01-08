@@ -6,22 +6,20 @@ import cors from 'cors';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Absolutna ścieżka do folderu public
-const publicPath = path.join(__dirname, 'public');
-app.use('/images', express.static(publicPath)); // Alias '/images' do folderu public
+// Middleware do obsługi statycznych plików (np. obrazków)
+app.use(express.static('public'));
 
-// CORS - dostosuj, by działało w lokalnym i produkcyjnym środowisku
+// Zezwalaj na żądania z frontendowego serwera (np. localhost:5173)
 app.use(
 	cors({
-		origin: process.env.FRONTEND_URL || 'http://localhost:5173', // Adres frontendu
+		origin: 'http://localhost:5173', // Adres frontendu
 		methods: ['GET', 'POST', 'PUT', 'DELETE'], // Zezwalaj na te metody
 		credentials: true, // Jeśli używasz ciasteczek
 	})
 );
 
 // Ścieżka do pliku JSON
-const guitarsFilePath = path.join(__dirname, 'data', 'guitars.json'); // Absolutna ścieżka
-console.log('Ścieżka do pliku JSON:', guitarsFilePath); // Logowanie w celach debugowania
+const guitarsFilePath = path.join(path.resolve(), 'data', 'guitars.json');
 
 // Trasa podstawowa
 app.get('/', (req, res) => {
@@ -39,12 +37,7 @@ app.get('/api/guitars', async (req, res) => {
 	}
 });
 
-// Przekierowanie na frontend (dla aplikacji SPA)
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'dist', 'index.html')); // Absolutna ścieżka do pliku index.html
-});
-
 // Nasłuchiwanie na porcie
 app.listen(PORT, () => {
-	console.log(`Serwer działa na porcie ${PORT}`);
+	console.log(`Serwer działa na http://localhost:${PORT}`);
 });
