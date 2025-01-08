@@ -11,7 +11,7 @@ const distPath = path.join(path.resolve(), 'dist');
 app.use(express.static(distPath));
 
 // Middleware do obsługi obrazków w folderze public (jeśli masz obrazy)
-const publicPath = path.join(__dirname, 'public'); // Użyj __dirname dla absolutnej ścieżki
+const publicPath = path.join(path.resolve(), 'public');
 app.use('/images', express.static(publicPath));
 
 // CORS - dostosuj, by działało w lokalnym i produkcyjnym środowisku
