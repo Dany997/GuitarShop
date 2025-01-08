@@ -46,6 +46,14 @@ app.get('/api/guitars', async (req, res) => {
 	}
 });
 
+app.use((req, res, next) => {
+	res.setHeader(
+		'Content-Security-Policy',
+		"default-src 'self'; img-src 'self' https:; script-src 'self' https://kit.fontawesome.com; style-src 'self' https: 'unsafe-inline';"
+	);
+	next();
+});
+
 // Nasłuchiwanie na porcie
 app.listen(PORT, () => {
 	console.log(`Serwer działa na porcie ${PORT}`);
