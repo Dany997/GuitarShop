@@ -3,16 +3,19 @@ import path from 'path';
 import { promises as fs } from 'fs';
 import cors from 'cors';
 
+// Uzyskujemy ścieżkę do katalogu bieżącego skryptu
+const __dirname = new URL('.', import.meta.url).pathname;
+
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware do obsługi statycznych plików (np. obrazków)
-const distPath = path.join(path.resolve(), 'dist');
+const distPath = path.join(__dirname, 'dist');
 app.use(express.static(distPath));
 
 // Middleware do obsługi obrazków w folderze public (jeśli masz obrazy)
 const publicPath = path.join(__dirname, 'public');
-app.use('/images', express.static(publicPath)); // Alias '/images' do folderu public
+app.use('/images', express.static(publicPath));
 
 // CORS - dostosuj, by działało w lokalnym i produkcyjnym środowisku
 app.use(
@@ -24,7 +27,7 @@ app.use(
 );
 
 // Ścieżka do pliku JSON
-const guitarsFilePath = path.join(path.resolve(), 'data', 'guitars.json');
+const guitarsFilePath = path.join(__dirname, 'data', 'guitars.json');
 console.log('Ścieżka do pliku JSON:', guitarsFilePath); // Logowanie w celach debugowania
 
 // Trasa podstawowa
@@ -41,11 +44,6 @@ app.get('/api/guitars', async (req, res) => {
 		console.error('Błąd podczas odczytu pliku JSON:', error.message);
 		res.status(500).send('Nie udało się załadować danych.');
 	}
-});
-
-// Przekierowanie na frontend (dla aplikacji SPA)
-app.get('*', (req, res) => {
-	res.sendFile(path.join(distPath, 'index.html'));
 });
 
 // Nasłuchiwanie na porcie
