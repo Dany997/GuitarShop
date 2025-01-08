@@ -9,15 +9,6 @@ const __dirname = new URL('.', import.meta.url).pathname;
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware CSP
-app.use((req, res, next) => {
-	res.setHeader(
-		'Content-Security-Policy',
-		"default-src 'self'; img-src 'self' https:; script-src 'self' https://kit.fontawesome.com; style-src 'self' https: 'unsafe-inline';"
-	);
-	next();
-});
-
 // Middleware do obsługi statycznych plików (np. obrazków)
 const distPath = path.join(__dirname, 'dist');
 app.use(express.static(distPath));
