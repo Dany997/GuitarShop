@@ -10,7 +10,9 @@ export const useProductStore = defineStore('product', {
 			if (this.products.length === 0) {
 				// Sprawdzamy, czy dane już są załadowane
 				try {
-					const response = await axios.get('http://localhost:3000/api/guitars');
+					const response = await axios.get(
+						'https://guitarshop-production.up.railway.app/api/guitars'
+					);
 					this.products = response.data;
 				} catch (error) {
 					console.error('Błąd podczas ładowania produktów:', error);
