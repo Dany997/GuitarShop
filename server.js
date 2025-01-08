@@ -10,7 +10,9 @@ const PORT = process.env.PORT || 3000;
 const distPath = path.join(path.resolve(), 'dist');
 app.use(express.static(distPath));
 
-app.use(express.static('public'));
+// Middleware do obsługi obrazków w folderze public (jeśli masz obrazy)
+const publicPath = path.join(__dirname, 'public'); // Użyj __dirname dla absolutnej ścieżki
+app.use('/images', express.static(publicPath));
 
 // CORS - dostosuj, by działało w lokalnym i produkcyjnym środowisku
 app.use(
