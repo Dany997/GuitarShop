@@ -5,7 +5,7 @@
 		"type": "Elektryczna",
 		"description": "Gitara elektryczna o wszechstronnym brzmieniu.",
 		"price": 1200,
-		"image": "guitar1.jpg",
+		"image": "/public/images/guitar1.jpg",
 		"stock": 5
 	},
 	{
