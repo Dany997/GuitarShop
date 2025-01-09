@@ -32,8 +32,8 @@ GuitarShop is a full-stack e-commerce application project that simulates an onli
   A custom **Node.js** and **Express.js** backend serves product data stored in a JSON file, functioning as a simplified database.
 - **Dynamic Page Rendering**:  
   Products are automatically displayed based on data retrieved from the backend.
-- **Modern Styling**:  
-  The application uses **SASS/SCSS** for responsive and visually appealing styling.
+- **Styling**:  
+  The application uses **SASS/SCSS** for styling.
 
 ---
 
