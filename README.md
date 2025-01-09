@@ -18,7 +18,7 @@ GuitarShop is a full-stack e-commerce application project that simulates an onli
 - **Backend**: Node.js, Express.js
 - **Authentication**: Firebase
 - **Hosting**: Railway
-- **Database**: JSON (custom-built, simplified)
+- **Database**: JSON (custom-built, simplified) -**Development Environment**: Vite
 
 ---
 
